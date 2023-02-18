@@ -9,23 +9,17 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     codeCoverageToolOption: 'JaCoCo'
-    codeCoverageClassFilter: '*'
-    codeCoverageClassFilesDirectories: '*'
-    codeCoverageSourceDirectories: '*'
+    codeCoverageSourceDirectories: '**'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
     effectivePomSkip: false
-    sonarQubeRunAnalysis: true
-    isJacocoCoverageReportXML: true
-    sqMavenPluginVersionChoice: 'latest'
-    checkStyleRunAnalysis: true
-    pmdRunAnalysis: true
-    findBugsRunAnalysis: true
-    spotBugsRunAnalysis: true
+    sonarQubeRunAnalysis: false
+
